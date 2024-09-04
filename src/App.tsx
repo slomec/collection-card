@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CollectionCard from "./components/collectionCard";
-import { paleoCardData, cards } from "./lib/data";
+import { cards } from "./lib/data";
 
 export default function App() {
   const [cardsList, setCardsList] = useState(cards.map((card) => card.id));
