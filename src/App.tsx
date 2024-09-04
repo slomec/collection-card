@@ -5,7 +5,7 @@ import { paleoCardData } from "./lib/data";
 export default function App() {
   return (
     <div className="App m-10">
-      <CollectionCard cardData={paleoCardData} />
+      <CollectionCard key={paleoCardData.id} cardData={paleoCardData} />
     </div>
   );
 }

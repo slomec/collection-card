@@ -19,5 +19,10 @@ export default function DifficultyBar({ difficulty }: { difficulty: number }) {
       <div className={`h-full w-full bg-[#B62323] `}></div>
     </div>,
   ];
-  return difficulties[difficulty >= 0 && difficulty <= 5 ? difficulty : 0];
+  return (
+    <div className="flex flex-row items-center justify-between">
+      <p className="text-[10px] ">Сложность</p>
+      {difficulties[difficulty >= 0 && difficulty <= 5 ? difficulty : 0]}
+    </div>
+  );
 }

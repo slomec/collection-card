@@ -7,5 +7,10 @@ export default function DurationBar({ duration }: { duration: number }) {
     { image: "/duration/long.svg", alt: "long" },
   ];
   const { image, alt } = durations[duration > 0 && duration <= 5 ? duration - 1 : 0];
-  return <img src={image} alt={alt} className="w-[100px]"></img>;
+  return (
+    <div className="flex flex-row items-center justify-between">
+      <p className="text-[10px]">Время игры</p>
+      <img src={image} alt={alt} className="w-[100px]"></img>
+    </div>
+  );
 }
