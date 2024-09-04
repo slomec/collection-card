@@ -7,6 +7,6 @@ export const paleoCardData: CollectionCardDataInterface = {
   raiting: 9.0,
   minPlayers: 4,
   maxPlayers: 12,
-  duration: 2,
-  difficulty: 3,
+  duration: 3,
+  difficulty: 2,
 };
