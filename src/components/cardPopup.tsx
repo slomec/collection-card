@@ -37,16 +37,17 @@ function Rate({
     );
   } else {
     return (
-      <div className="h-[42px] width-full p-3 flex gap-2 items-center bg-[#fff] rounded-[10px]">
+      <div className="h-[42px] size-full p-3 m-3 flex justify-between items-center bg-[#fff] rounded-[10px]">
         {stars.map((rait) => (
           <button
+            className="hover:scale-150 size-full"
             key={rait}
             onClick={() => {
               setIsOpened(false);
               handleSendRaiting(rait);
             }}
           >
-            <img className="size-full hover:scale-150" src="/popupIcons/star.svg" alt="star" />
+            <img className="size-full " src="/popupIcons/star.svg" alt="star" />
           </button>
         ))}
       </div>
