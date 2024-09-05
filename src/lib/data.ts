@@ -1,5 +1,5 @@
 import CollectionCard from "../components/collectionCard";
-import { CollectionCardDataInterface } from "../interfaces";
+import { CollectionCardDataInterface } from "../api/interfaces";
 
 export const paleoCardData: CollectionCardDataInterface = {
   id: 1,

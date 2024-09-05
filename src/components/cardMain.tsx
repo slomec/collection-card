@@ -1,6 +1,36 @@
-import { CollectionCardDataInterface } from "../interfaces";
+import { CollectionCardDataInterface } from "../api/interfaces";
 import { MouseEventHandler } from "react";
 import { calculateQuantity } from "../api/playersQuantityCalc";
+
+export default function CardMain({
+  cardData,
+  onClick,
+}: {
+  cardData: CollectionCardDataInterface;
+  onClick: MouseEventHandler;
+}) {
+  return (
+    <div
+      className="bg-cardBG w-full h-[126px] gap-4 p-1 shadow-md rounded-2xl flex relative pr-[40px] hover:cursor-pointer hover:scale-105"
+      onClick={onClick}
+    >
+      <ImageShadow image={cardData.image} title={cardData.title} />
+
+      <div className="size-full relative flex flex-col justify-between py-3 ">
+        <h5 className="font-bold text-[12px]">{cardData.title}</h5>
+
+        <div>
+          <DurationBar duration={cardData.duration} />
+          <DifficultyBar difficulty={cardData.difficulty} />
+        </div>
+
+        <PlayersQuantity minPlayers={cardData.minPlayers} maxPlayers={cardData.maxPlayers} />
+      </div>
+
+      <Raiting raiting={cardData.raiting} />
+    </div>
+  );
+}
 
 function ImageShadow({ image, title }: { image: string; title: string }) {
   return (
@@ -20,6 +50,7 @@ function DurationBar({ duration }: { duration: number }) {
     { image: "/duration/long.svg", alt: "long" },
   ];
   const { image, alt } = durations[duration > 0 && duration <= 5 ? duration - 1 : 0];
+
   return (
     <div className="flex flex-row items-center justify-between">
       <p className="text-[10px]">Время игры</p>
@@ -49,6 +80,7 @@ function DifficultyBar({ difficulty }: { difficulty: number }) {
       <div className={`h-full w-full bg-[#B62323] `}></div>
     </div>,
   ];
+
   return (
     <div className="flex flex-row items-center justify-between">
       <p className="text-[10px] ">Сложность</p>
@@ -75,36 +107,6 @@ function Raiting({ raiting }: { raiting: number }) {
       <div className="w-[48px] h-[20px] text-[#fff] font-bold text-xs absolute right-0 top-[19px] z-1 text-center">
         {raiting.toFixed(1)}
       </div>
-    </div>
-  );
-}
-
-export default function CardMain({
-  cardData,
-  onClick,
-}: {
-  cardData: CollectionCardDataInterface;
-  onClick: MouseEventHandler;
-}) {
-  return (
-    <div
-      className="bg-cardBG w-full h-[126px] gap-4 p-1 shadow-md rounded-2xl flex relative pr-[40px] hover:shadow-inner hover:cursor-pointer"
-      onClick={onClick}
-    >
-      <ImageShadow image={cardData.image} title={cardData.title} />
-
-      <div className="size-full relative flex flex-col justify-between py-3 ">
-        <h5 className="font-bold text-[12px]">{cardData.title}</h5>
-
-        <div>
-          <DurationBar duration={cardData.duration} />
-          <DifficultyBar difficulty={cardData.difficulty} />
-        </div>
-
-        <PlayersQuantity minPlayers={cardData.minPlayers} maxPlayers={cardData.maxPlayers} />
-      </div>
-
-      <Raiting raiting={cardData.raiting} />
     </div>
   );
 }
