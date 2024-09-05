@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { usePopupContext } from "../api/hooks";
+import { Link } from "react-router-dom";
 
 export default function CardPopup() {
   const [isOpened, setIsOpened] = useState(false);
@@ -56,9 +57,9 @@ function Rate({
 function Info({ isOpened }: { isOpened: boolean }) {
   return (
     !isOpened && (
-      <button className="size-fit rounded-[10px] hover:scale-105">
+      <Link to="/description" className="size-fit rounded-[10px] hover:scale-105">
         <img className="h-[42px]" src="/popupIcons/showInfoBtn.svg" alt="ShowInfoBar" />
-      </button>
+      </Link>
     )
   );
 }

@@ -1,23 +1,14 @@
-import { useState } from "react";
-import CollectionCard from "./components/collectionCard";
-import { cards } from "./lib/data";
+import { Route, Routes } from "react-router-dom";
+import Main from "./main";
+import Descripton from "./Descripton";
 
 export default function App() {
-  const [cardsList, setCardsList] = useState(cards.map((card) => card.id));
-
-  function handleDeleteCard(id: number) {
-    setCardsList(cardsList.filter((cardId) => cardId !== id));
-  }
-
   return (
     <div className="App m-10">
-      <div className="flex flex-col gap-2">
-        {cards.map((card) => {
-          if (cardsList.includes(card.id)) {
-            return <CollectionCard key={card.id} cardData={card} handleDeleteCard={handleDeleteCard} />;
-          }
-        })}
-      </div>
+      <Routes>
+        <Route path="/" Component={Main} />
+        <Route path="/description" Component={Descripton} />
+      </Routes>
     </div>
   );
 }
